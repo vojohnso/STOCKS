@@ -1,24 +1,42 @@
-import logo from './logo.svg';
-import './App.css';
+import Navbar from './Navbar';
+import Home from './Home';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import AboutUs from './About_Us';
+import NotFound from './NotFound';
+import ContactUs from './ContactUs';
+import SummaryBySenators from './SummaryBySenators';
+import SummaryByTickers from './SummaryByTickers';
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div className="App">
+        <Navbar />
+        <div className="content">
+          <Switch>
+            <Route exact path="/">
+              <Home />
+            </Route>
+            <Route path="/About_Us">
+              <AboutUs />
+            </Route>
+            <Route path="/Contact_Us">
+              <ContactUs />
+            </Route>
+            <Route path="/Summary_by_Senators">
+              <SummaryBySenators />
+            </Route>
+            <Route path="/Summary_by_Tickers">
+              <SummaryByTickers />
+            </Route>
+            <Route path="*">
+              <NotFound />
+            </Route>
+          </Switch>
+        </div>
+      </div>
+    </Router>
   );
 }
 
