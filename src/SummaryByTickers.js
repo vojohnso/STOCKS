@@ -1,4 +1,6 @@
-const summary_by_tickers = () => {
+import useFetch from "./useFetch"
+
+const SummaryByTickers = () => {
     return (  
         <div className='summary-by-tickers-page'>
             <h2>Summary by Tickers</h2>
@@ -6,4 +8,4 @@ const summary_by_tickers = () => {
     );
 }
  
-export default summary_by_tickers;
+export default SummaryByTickers;

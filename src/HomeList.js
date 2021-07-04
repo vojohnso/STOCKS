@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { FaUser } from 'react-icons/fa';
+import { FaUser, FaCalendarDay } from 'react-icons/fa';
 import { GoGraph } from "react-icons/go";
 
 const HomeList = () => {
@@ -15,6 +15,11 @@ const HomeList = () => {
         <h2> <GoGraph/> Summary by Senators</h2>
         </Link>
       </div>
+        <div className='summary-by-days'>
+      <Link to='/summary_by_days'>
+        <h2> <FaCalendarDay/> Summary by Days</h2>
+        </Link>
+        </div>
     </div>
   );
 }

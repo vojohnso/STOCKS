@@ -67,6 +67,39 @@
   text-decoration: none;
 }
 
+.summary-by-days {
+  padding: 10px 16px;
+  margin: 20px 0;
+  border-bottom: 1px solid #fafafa;
+}
+.summary-by-days:hover {
+  box-shadow: 1px 3px 5px rgba(0,0,0,0.1);
+}
+.summary-by-days h2 {
+  font-size: 20px;
+  margin-bottom: 8px;
+}
+.summary-by-days a{
+  text-decoration: none;
+}
+
+
+.senator-preview {
+  padding: 10px 16px;
+  margin: 20px 0;
+  border-bottom: 1px solid #fafafa;
+}
+.senator-preview:hover {
+  box-shadow: 1px 3px 5px rgba(0,0,0,0.1);
+}
+.senator-preview h2 {
+  font-size: 20px;
+  margin-bottom: 8px;
+}
+.senator-preview a{
+  text-decoration: none;
+}
+
 /* contact-us new blog form */
 .contact-us {
   max-width: 400px;
