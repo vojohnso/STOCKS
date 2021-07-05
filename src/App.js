@@ -1,13 +1,13 @@
-import Navbar from './Navbar';
-import Home from './Home';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import AboutUs from './About_Us';
-import NotFound from './NotFound';
-import ContactUs from './ContactUs';
-import SummaryBySenators from './SummaryBySenators';
-import SummaryByTickers from './SummaryByTickers';
-import SummaryByDays from './SummaryByDays';
-import SenatorPageContainer from './SenatorPage';
+import Navbar from './containers/Navbar';
+import Home from './containers/Home';
+import AboutUs from './containers/About_Us';
+import NotFound from './containers/NotFound';
+import ContactUs from './containers/ContactUs';
+import SummaryBySenators from './containers/SummaryBySenators';
+import SummaryByTickers from './containers/SummaryByTickers';
+import SummaryByDays from './containers/SummaryByDays';
+import SenatorPageContainer from './containers/SenatorPageContainer';
 
 function App() {
   return (

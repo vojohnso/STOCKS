@@ -1,5 +1,5 @@
-import HomeList from "./HomeList";
-import useFetch from "./useFetch"
+import HomeList from "../components/HomeList";
+import useFetch from "../services/useFetch"
 import { Link } from 'react-router-dom';
 
 const Home = () => {

@@ -1,6 +1,6 @@
-import useFetch from './useFetch';
+import useFetch from '../services/useFetch';
 import { Link } from 'react-router-dom';
-import { organizeBySenator } from './SenateDBFormatter';
+import { organizeBySenator } from '../services/SenateDBFormatter';
 
 const SummaryBySenators = () => {
     const {data, isPending, error} = useFetch('https://senate-stock-watcher-data.s3-us-west-2.amazonaws.com/aggregate/all_transactions.json')
