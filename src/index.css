@@ -47,7 +47,7 @@
   font-size: 20px;
   margin-bottom: 8px;
 }
-.summary-by-senators a{
+.summary-by-senators a {
   text-decoration: none;
 }
 
@@ -63,7 +63,7 @@
   font-size: 20px;
   margin-bottom: 8px;
 }
-.summary-by-tickers a{
+.summary-by-tickers a {
   text-decoration: none;
 }
 
@@ -79,11 +79,11 @@
   font-size: 20px;
   margin-bottom: 8px;
 }
-.summary-by-days a{
+.summary-by-days a {
   text-decoration: none;
 }
 
-
+/* CSS for senator-preview page */
 .senator-preview {
   padding: 10px 16px;
   margin: 20px 0;
@@ -96,7 +96,41 @@
   font-size: 20px;
   margin-bottom: 8px;
 }
-.senator-preview a{
+.senator-preview a {
+  text-decoration: none;
+}
+
+/* CSS for ticker-preview page */
+.ticker-preview {
+  padding: 10px 16px;
+  margin: 20px 0;
+  border-bottom: 1px solid #fafafa;
+}
+.ticker-preview:hover {
+  box-shadow: 1px 3px 5px rgba(0,0,0,0.1);
+}
+.ticker-preview h2 {
+  font-size: 20px;
+  margin-bottom: 8px;
+}
+.ticker-preview a {
+  text-decoration: none;
+}
+
+/* CSS for days-preview page */
+.days-preview {
+  padding: 10px 16px;
+  margin: 20px 0;
+  border-bottom: 1px solid #fafafa;
+}
+.days-preview:hover {
+  box-shadow: 1px 3px 5px rgba(0,0,0,0.1);
+}
+.days-preview h2 {
+  font-size: 20px;
+  margin-bottom: 8px;
+}
+.days-preview a {
   text-decoration: none;
 }
 
