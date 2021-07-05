@@ -7,6 +7,7 @@ import ContactUs from './ContactUs';
 import SummaryBySenators from './SummaryBySenators';
 import SummaryByTickers from './SummaryByTickers';
 import SummaryByDays from './SummaryByDays';
+import SenatorPageContainer from './SenatorPage';
 
 function App() {
   return (
@@ -18,19 +19,21 @@ function App() {
               <Route exact path="/">
                 <Home />
               </Route>
-              <Route path="/About_Us">
+              <Route path="/about_us">
                 <AboutUs />
               </Route>
-              <Route path="/Contact_Us">
+              <Route path="/contact_us">  
                 <ContactUs />
               </Route>
-              <Route path="/Summary_by_Senators">
+              <Route path="/summary_by_senators/:id" component={SenatorPageContainer}>
+              </Route>
+              <Route exact path="/summary_by_senators">
                 <SummaryBySenators/>
               </Route>
-              <Route path="/Summary_by_Tickers">
+              <Route path="/summary_by_tickers">
                 <SummaryByTickers />
               </Route>
-              <Route path="/Summary_by_Days">
+              <Route path="/summary_by_days">
                 <SummaryByDays/>
               </Route>
               <Route path="*">

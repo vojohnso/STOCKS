@@ -1,10 +1,11 @@
 import useFetch from './useFetch';
 import { Link } from 'react-router-dom';
-import organize_by_senator from './SenateDBFormatter';
+import { organizeBySenator } from './SenateDBFormatter';
 
 const SummaryBySenators = () => {
     const {data, isPending, error} = useFetch('https://senate-stock-watcher-data.s3-us-west-2.amazonaws.com/aggregate/all_transactions.json')
-    const senatorArr = organize_by_senator(data);                                            
+    const senatorArr = organizeBySenator(data);
+    
     return (  
         <div className='summary-by-senators-list'>
             <h2>Summary by Senators</h2>
@@ -12,7 +13,7 @@ const SummaryBySenators = () => {
             { isPending && <div>Loading...</div> }
             {senatorArr && senatorArr.map((senator) => (
                 <div className='senator-preview' key={senator.id}>
-                    <Link to={`/senator/${senator}`}>
+                    <Link to={`/summary_by_senators/${senator}`}>
                         <h2 className='senator-preview-name'>{senator}</h2>
                     </Link>
                 </div>

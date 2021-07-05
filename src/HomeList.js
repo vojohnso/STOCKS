@@ -12,7 +12,7 @@ const HomeList = () => {
       </div>
       <div className='summary-by-tickers'>
       <Link to='/summary_by_tickers'>
-        <h2> <GoGraph/> Summary by Senators</h2>
+        <h2> <GoGraph/> Summary by Tickers</h2>
         </Link>
       </div>
         <div className='summary-by-days'>
