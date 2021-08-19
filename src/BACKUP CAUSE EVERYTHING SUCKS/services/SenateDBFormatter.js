@@ -1,15 +1,32 @@
+// Function used to grab an array of all senators
 import axios from 'axios';
 
-// Function used to grab an array of all senators
-export const organizeBySenator = data => {
-    const senatorKey = []; 
-    for (var i in data) {
-        const senatorName = data[i].first_name + " " + data[i].last_name
-        senatorKey.push(senatorName);
+// export const organizeBySenator = data => {
+    // const senatorKey = []; 
+    // for (var i in data) {
+    //     const senatorName = data[i].first_name + " " + data[i].last_name
+    //     senatorKey.push(senatorName);
+    // }
+    // const senatorArr = senatorKey.filter((item, i, ar) => ar.indexOf(item) === i);
+    // //console.log(senatorArr);
+    // return (senatorArr);
+// }
+
+export const organizeBySenator = async () => {
+    try {
+        const response = await axios.get('https://senate-stock-watcher-data.s3-us-west-2.amazonaws.com/aggregate/all_transactions_for_senators.json');
+        const responseData = response.data;
+        const senatorKey = []; 
+        for (var i in responseData) {
+            const senatorName = responseData[i].first_name + " " + responseData[i].last_name
+            senatorKey.push(senatorName);
+        }
+        const senatorArr = senatorKey.filter((item, i, ar) => ar.indexOf(item) === i);
+        //console.log(senatorArr);
+        return (senatorArr);
+    } catch (error) {
+        console.log(error);
     }
-    const senatorArr = senatorKey.filter((item, i, ar) => ar.indexOf(item) === i);
-    //console.log(senatorArr);
-    return (senatorArr);
 }
 
 // export const getSenatorID = () => {
@@ -43,11 +60,16 @@ export const organizeBySenator = data => {
 //         return (senatorIDKey);
 //     })
 //     .catch((res) => {
-//         console.log(res)
+//         console.log('Oh no')
 //       });
 // }
 
-
+export const getSenatorID = async () => {
+    try {
+        const response = await axios.get('https://theunitedstates.io/congress-legislators/legislators-current.json');
+        response.data
+    }
+}
 
 // Function used to grab an array of all tickers
 export const organizeByTicker = data => {
@@ -78,25 +100,18 @@ export const getSenatorDetails = senatorName => {
     })
     .then(res => {
         const senatorList = [];
-        const buttonPopUpList = [];
-        const returnList = [];
         for (var i in res) {
             if (res[i].senator === senatorName) {
                 senatorList.push(res[i]);
-                buttonPopUpList.push(false);
             }
         }
         //console.log(senatorList);
-        returnList.push(senatorList);
-        returnList.push(buttonPopUpList);
-        console.log(returnList);
-        return returnList; 
+        return senatorList; 
     })
     .catch((res) => {
       console.log(res)
     });
 
 }
-
 
 

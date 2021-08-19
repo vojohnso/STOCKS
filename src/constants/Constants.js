@@ -1,1 +1,1 @@
-export const API_KEY = 'api_key=Mb7JwOrQFfBBtXFxPmoDuYcRt2JEwdyEeGUX42os';
+export const BASE_CONGRESS_IMAGE_PATH = 'https://theunitedstates.io/images/congress/225x275/'
