@@ -1,7 +1,6 @@
 import React from "react";
 import { getSenatorDetails, setSenatorPopUp } from '../services/SenateDBFormatter';
 import Button from '@material-ui/core/Button';
-import PopUpSenatorPage from '../components/PopUpSenatorPage'
 import SenatorPageModal from '../components/SenatorPageModal'
 
 //                              <Link to={`/summary_by_senators/${senator.id}`}>
