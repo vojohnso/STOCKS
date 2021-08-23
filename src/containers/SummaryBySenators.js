@@ -60,7 +60,7 @@ async componentDidMount() {
                                 <h2 key={i} className='senator-preview-name'>{senator}</h2>
                                 <img class='225x275-senator-rounded-img' 
                                 src={`${BASE_CONGRESS_IMAGE_PATH}${senatorID[senator]}.jpg`} 
-                                alt='Congressional Photo of Senator' 
+                                alt='Congressional Senator' 
                                 onError={e => {
                                     e.onerror = null
                                     e.target.src='https://lh3.googleusercontent.com/ZgRbFptUzuFwwLzlnhjP6YCw29iFonExP4D6WenmP3iP6sFw5d5wgj01zjz15HpcUDmY=s85'}}></img>

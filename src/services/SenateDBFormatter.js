@@ -20,12 +20,11 @@ export const organizeBySenator = data => {
      .then(data => {
          const senatorIDKey = {};
           for (var i in data) {
-              const senatorName = "";
               const name = data[i].name.official_full;
-              if (name != undefined) {
+              if (name !== undefined) {
                 const senatorName = name.replace('.', "");
                 for (var j in dataName) {
-                    if (senatorName == dataName[j]) {
+                    if (senatorName === dataName[j]) {
                         senatorIDKey[senatorName] = data[i].id.bioguide;
                     }
                 }

@@ -60,7 +60,6 @@ class DayPageContainer extends Component {
                                 </PageModal>
                             </div>
                         ))}
-
                     </div>
                 </div>
             );
