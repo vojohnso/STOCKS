@@ -1,8 +1,8 @@
 import React, { Component } from "react";
-import { getSenatorDetails } from '../services/SenateDBFormatter';
+import { getTickerDetails } from '../services/SenateDBFormatter';
 import PageModal from '../components/PageModal'
 
-class SenatorPageContainer extends Component {
+class TickerPageContainer extends Component {
     state = {
         data: null,
         isPending: true,
@@ -11,7 +11,7 @@ class SenatorPageContainer extends Component {
 
     async componentDidMount() {
         if (this.props.match.params.id) {
-            const data = await getSenatorDetails(this.props.match.params.id);
+            const data = await getTickerDetails(this.props.match.params.id);
             //console.log(data);
             if (data === undefined || data.length === 0) {  //if we don't have any data we want to run the error message!
                 this.setState({
@@ -29,33 +29,33 @@ class SenatorPageContainer extends Component {
     }
     render() {
         const { data, isPending, error } = this.state;
-        let senatorPageDetails = null;
+        let tickerPageDetails = null;
         //console.log(data);
+        //const transactions = data.transactions;
 
         if (error) {
-            senatorPageDetails = (
+            tickerPageDetails = (
                 <h3>Oops! Something went wrong trying to load this page!</h3>
             )
         }
 
         if (isPending) {
-            senatorPageDetails = (
+            tickerPageDetails = (
                 <h3>Loading senator's details now...</h3>
             )
         }
-        console.log(data)   
+        //console.log(data)   
         // Actually using the data now...
         if (!error && data) {  
-            senatorPageDetails = ( 
-                <div className='senator-page-wrapper'>
-                    <div className='senator-page-name'>
-                        <h1>{this.props.match.params.id}</h1>
-                        {data && data.map((senator, i) => (
-                            <div className='senator-preview' key={i}>
-                                    <h2 className='senator-transaction-amount'>{senator.transaction_date}</h2>
-                                    <b className='senator-transaction-amount'>{senator.amount}</b>
-                                    <p className='senator-transaction-ticker'>{senator.ticker}</p>
-                                    <PageModal data={senator}>
+            tickerPageDetails = ( 
+                <div className='ticker-page-wrapper'>
+                    <div className='ticker-page-name'>
+                        <h1>{data.name}</h1>
+                        {data.transactions && data.transactions.map((ticker, i) => (
+                            <div className='ticker-preview' key={i}>
+                                <h2 className='ticker-senator'>{ticker.senator}</h2>
+                                    <h2 className='ticker-transaction-amount'>{ticker.transaction_date}</h2>
+                                    <PageModal data={ticker} tickerName={data.ticker}>
                                     </PageModal>
                             </div>
                         ))}
@@ -64,8 +64,8 @@ class SenatorPageContainer extends Component {
                 </div>
             );
         }
-        return <>{senatorPageDetails}</>;
+        return <>{tickerPageDetails}</>;
     }
 }
 
-export default SenatorPageContainer;
+export default TickerPageContainer;

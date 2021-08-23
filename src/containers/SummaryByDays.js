@@ -11,8 +11,8 @@ const SummaryByDays = () => {
             <h2>Summary by Days</h2>
             { error && <div>{ error }</div> }
             { isPending && <div>Loading...</div> }
-            {dayArr && dayArr.map((days) => (
-                <div className='days-preview' key={days.id}>
+            {dayArr && dayArr.map((days, i) => (
+                <div className='days-preview' key={i}>
                     <Link to={`/summary_by_days/${days}`}>
                         <h2 className='days-preview-name'>{days}</h2>
                     </Link>
@@ -21,6 +21,5 @@ const SummaryByDays = () => {
         </div>
     );
 }
- 
  
 export default SummaryByDays

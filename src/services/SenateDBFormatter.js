@@ -48,16 +48,17 @@ export const organizeBySenator = data => {
       });
  }
 
-
-
 // Function used to grab an array of all tickers
 export const organizeByTicker = data => {
     const tickerKey = [];
     for (var i in data) {
-        tickerKey.push(data[i].ticker);
+        if (data[i].name == null) {
+            //console.log("YAY!")
+            data[i].name = data[i].ticker;
+        }
+        tickerKey.push(data[i]);
     }
-    const tickerArr = tickerKey.filter((item, i , ar) => ar.indexOf(item) === i);
-    return (tickerArr);
+    return (tickerKey);
 }
 
 // Function used to grab an array of all tickers
@@ -109,5 +110,50 @@ export const getSenatorDetails = senatorName => {
 
 }
 
+export const getTickerDetails = tickerName => {
+    return fetch('https://senate-stock-watcher-data.s3-us-west-2.amazonaws.com/aggregate/all_ticker_transactions.json')
+    .then(res => {
+        if (!res.ok) {
+          throw Error('could not fetch the data for that resource');
+        } return res.json();
+    })
+    .then(res => {
+        const tickerList = [];
+        for (var i in res) {
+            if (res[i].ticker === tickerName) {
+                tickerList.push(res[i]);
+            }
+        }
+        console.log(tickerList[0]);
+        return tickerList[0]; 
+    })
+    .catch((res) => {
+      console.log(res)
+    });
+
+}
+
+export const getDayDetails = date => {
+    return fetch('https://senate-stock-watcher-data.s3-us-west-2.amazonaws.com/aggregate/all_transactions.json')
+    .then(res => {
+        if (!res.ok) {
+          throw Error('could not fetch the data for that resource');
+        } return res.json();
+    })
+    .then(res => {
+        const dateList = [];
+        for (var i in res) {
+            if (res[i].transaction_date === date) {
+                dateList.push(res[i]);
+            }
+        }
+        console.log(dateList);
+        return dateList; 
+    })
+    .catch((res) => {
+      console.log(res)
+    });
+
+}
 
 

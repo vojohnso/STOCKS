@@ -8,6 +8,8 @@ import SummaryBySenators from './containers/SummaryBySenators';
 import SummaryByTickers from './containers/SummaryByTickers';
 import SummaryByDays from './containers/SummaryByDays';
 import SenatorPageContainer from './containers/SenatorPageContainer';
+import TickerPageContainer from './containers/TickerPageContainer';
+import DayPageContainer from './containers/DayPageContainer';
 
 function App() {
   return (
@@ -30,10 +32,14 @@ function App() {
               <Route exact path="/summary_by_senators">
                 <SummaryBySenators/>
               </Route>
-              <Route path="/summary_by_tickers">
+              <Route path="/summary_by_tickers/:id" component={TickerPageContainer}>
+              </Route>
+              <Route exact path="/summary_by_tickers">
                 <SummaryByTickers />
               </Route>
-              <Route path="/summary_by_days">
+              <Route path="/summary_by_days/:id+" component={DayPageContainer}>
+              </Route>
+              <Route exact path="/summary_by_days">
                 <SummaryByDays/>
               </Route>
               <Route path="*">

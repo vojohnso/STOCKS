@@ -2,7 +2,7 @@
 import { Link } from 'react-router-dom';
 import { getSenatorID, getSummaryDetails } from '../services/SenateDBFormatter';
 import React, { Component } from "react";
-import { BASE_CONGRESS_IMAGE_PATH, ALT_CONGRESS_IMAGE_PATH } from '../constants/Constants'
+import { BASE_CONGRESS_IMAGE_PATH } from '../constants/Constants'
 
 class SummaryBySenators extends Component {
     state = {
