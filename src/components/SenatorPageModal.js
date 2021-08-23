@@ -8,7 +8,7 @@ export default function Modal(SenatorData) {
   const toggleModal = () => {
     setModal(!modal);
   };
-  console.log(SenatorData.SenatorData);
+  //console.log(SenatorData.SenatorData);
   if(modal) {
     document.body.classList.add('active-modal')
   } else {

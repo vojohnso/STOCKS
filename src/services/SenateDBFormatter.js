@@ -1,5 +1,3 @@
-import axios from 'axios';
-
 // Function used to grab an array of all senators
 export const organizeBySenator = data => {
     const senatorKey = []; 
@@ -12,40 +10,43 @@ export const organizeBySenator = data => {
     return (senatorArr);
 }
 
-// export const getSenatorID = () => {
-//     return fetch('https://theunitedstates.io/congress-legislators/legislators-current.json')
-//     .then(res => {
-//         if (!res.ok) {
-//             throw Error('could not fetch the data for that resource');
-//           } return res.json();
-//     })
-//     .then(data => {
-//         const senatorIDKey = {};
-//         for (var i in data) {
-//             const senatorName = data[i].name.first + " " + data[i].name.last;
-//             //console.log(dataName);
-//             // if (data.name.middle) {
-//             //     dataName = data[i].first + " " + data[i].middle + " " + data[i].last;
-//             // } else {
-                
-//             // }
-//             // console.log(dataName);
-//             // console.log(senatorName)
-//             // if (senatorName == dataName) {
-//                 //console.log(data[i].id.bioguide)
-//                 // return data[i].id.bioguide;
-//             //} 
-//             // senatorIDKey.push(data[i].id.bioguide);
-//             senatorIDKey[senatorName] = data[i].id.bioguide;
-//         }
-//         // const senatorIDArr = senatorIDKey.filter((item, i , ar) => ar.indexOf(item) === i);
-//         // console.log(senatorIDKey);
-//         return (senatorIDKey);
-//     })
-//     .catch((res) => {
-//         console.log(res)
-//       });
-// }
+ export const getSenatorID = (dataName) => {
+     return fetch('https://theunitedstates.io/congress-legislators/legislators-current.json')
+     .then(res => {
+         if (!res.ok) {
+             throw Error('could not fetch the data for that resource');
+           } return res.json();
+     })
+     .then(data => {
+         const senatorIDKey = {};
+          for (var i in data) {
+              const senatorName = "";
+              const name = data[i].name.official_full;
+              if (name != undefined) {
+                const senatorName = name.replace('.', "");
+                for (var j in dataName) {
+                    if (senatorName == dataName[j]) {
+                        senatorIDKey[senatorName] = data[i].id.bioguide;
+                    }
+                }
+              }
+              
+            //   console.log(senatorName)
+            //   if (data.name.middle) {
+            //       dataName = data[i].first + " " + data[i].middle + " " + data[i].last;
+            //   } else {
+            //     dataName = data[i].first + " " + " " + data[i].last;;
+            //   }
+            // console.log(dataName);
+            // console.log(senatorName)
+        }
+        //const senatorIDArr = senatorIDKey.filter((item, i , ar) => ar.indexOf(item) === i);
+        return (senatorIDKey);
+    })
+    .catch((res) => {
+        console.log(res)
+      });
+ }
 
 
 
@@ -69,6 +70,22 @@ export const organizeByDays = data => {
     return (dayArr);
 }
 
+export const getSummaryDetails = () => {
+    return fetch('https://senate-stock-watcher-data.s3-us-west-2.amazonaws.com/aggregate/all_transactions_for_senators.json')
+    .then(res => {
+        if (!res.ok) {
+            throw Error('could not fetch the data for that resource');
+          } return res.json();
+    })
+    .then(res => {
+        const senatorData = organizeBySenator(res);
+        //console.log(senatorData)
+        return senatorData;
+    })
+    .catch((res) => {
+        console.log(res)
+      });
+}
 export const getSenatorDetails = senatorName => {
     return fetch('https://senate-stock-watcher-data.s3-us-west-2.amazonaws.com/aggregate/all_transactions.json')
     .then(res => {
@@ -78,19 +95,13 @@ export const getSenatorDetails = senatorName => {
     })
     .then(res => {
         const senatorList = [];
-        const buttonPopUpList = [];
-        const returnList = [];
         for (var i in res) {
             if (res[i].senator === senatorName) {
                 senatorList.push(res[i]);
-                buttonPopUpList.push(false);
             }
         }
         //console.log(senatorList);
-        returnList.push(senatorList);
-        returnList.push(buttonPopUpList);
-        console.log(returnList);
-        return returnList; 
+        return senatorList; 
     })
     .catch((res) => {
       console.log(res)

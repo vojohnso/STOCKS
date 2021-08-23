@@ -1,44 +1,17 @@
-import React from "react";
-import { getSenatorDetails, setSenatorPopUp } from '../services/SenateDBFormatter';
-import Button from '@material-ui/core/Button';
+import React, { Component } from "react";
+import { getSenatorDetails } from '../services/SenateDBFormatter';
 import SenatorPageModal from '../components/SenatorPageModal'
 
-//                              <Link to={`/summary_by_senators/${senator.id}`}>
-{/* <PopUpSenatorPage trigger={this.state.buttonPopup[i]}>
-<h3>Details of </h3>
-</PopUpSenatorPage> */}
-class SenatorPageContainer extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            data: null,
-            isPending: true,
-            error: false,
-            buttonPopup: null
-        };
-        this.handleClick = this.handleClick.bind(this);
-    }
-
-    handleClick = (id) => {
-        var senatorData = this.state.buttonPopup;
-        console.log(senatorData[id]);
-        if (this.state.buttonPopup[id]==false) {
-            senatorData[id]=true;
-        }
-        else {
-            senatorData[id]=false;
-        }
-        this.setState({
-            buttonPopup: senatorData
-        })
+class SenatorPageContainer extends Component {
+    state = {
+        data: null,
+        isPending: true,
+        error: false,
     }
 
     async componentDidMount() {
         if (this.props.match.params.id) {
-            const full_data = await getSenatorDetails(this.props.match.params.id);
-            
-            const data = full_data[0];
-            const buttonPopup = full_data[1];
+            const data = await getSenatorDetails(this.props.match.params.id);
             //console.log(data);
             if (data === undefined || data.length === 0) {  //if we don't have any data we want to run the error message!
                 this.setState({
@@ -46,18 +19,16 @@ class SenatorPageContainer extends React.Component {
                     error: true 
                 });
             } else {
-                console.log(buttonPopup);
                 this.setState({
                 isPending: false,
                 data,
                 error: false,
-                buttonPopup 
                 });
             }
         }
     }
     render() {
-        const { data, isPending, error, buttonPopup } = this.state;
+        const { data, isPending, error } = this.state;
         let senatorPageDetails = null;
 
         if (error) {
@@ -70,7 +41,8 @@ class SenatorPageContainer extends React.Component {
             senatorPageDetails = (
                 <h3>Loading senator's details now...</h3>
             )
-        }   
+        }
+        console.log(data)   
         // Actually using the data now...
         if (!error && data) {  
             senatorPageDetails = ( 
