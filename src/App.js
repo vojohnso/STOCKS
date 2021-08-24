@@ -10,13 +10,33 @@ import SummaryByDays from './containers/SummaryByDays';
 import SenatorPageContainer from './containers/SenatorPageContainer';
 import TickerPageContainer from './containers/TickerPageContainer';
 import DayPageContainer from './containers/DayPageContainer';
+import Dropdown from './components/Dropdown';
+import Footer from './components/Footer';
+import React, {useState, useEffect} from 'react';
 
 function App() {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const toggle = () => {
+    setIsOpen(!isOpen);
+  };
+
+  useEffect(() => {
+    const hideMenu = () =>{
+      if(window.innerWidth > 768 && isOpen) {
+        setIsOpen(false);
+      }
+    }
+    window.addEventListener('resize', hideMenu);
+    return () => {
+      window.removeEventListener('resize', hideMenu);
+    } 
+  })
+
   return (
       <Router>
-        <div className="App">
-          <Navbar />
-          <div className="content">
+          <Navbar toggle ={toggle}/>
+          <Dropdown isOpen={isOpen} toggle={toggle}/>
             <Switch>
               <Route exact path="/">
                 <Home />
@@ -46,9 +66,8 @@ function App() {
                 <NotFound />
               </Route>
             </Switch>
-          </div>
-        </div>
       </Router>
+  
   );
 }
 

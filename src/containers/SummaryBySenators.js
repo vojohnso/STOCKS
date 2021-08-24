@@ -45,28 +45,30 @@ async componentDidMount() {
             )
         }
         console.log(senatorData);
-        console.log(senatorID);
 
         if (!error && senatorData) {  
-            senatorPageDetails = ( 
-                <div className='senator-page-wrapper'>
-                    <div className='summary-by-senators-list'></div>
-                        <h2>Summary by Senators</h2>
+            senatorPageDetails = (
+                <div className=' ml-40 mr-40 mt-8'>
+                    <h2 className='text-2xl mb-2 font-mono'>Summary by Senators</h2> 
+                        <div className='flex flex-col bg-white h-screen font-mono lg:grid grid-cols-3 gap-8 '>
                         { error && <div>{ error }</div> }
                         { isPending && <div>Loading...</div> }
                         {senatorData && senatorData.map((senator, i) => (
-                        <div className='senator-preview' key={i}>
+                        <div className='mt-0 bg-white px-2 py-4 rounded-lg shadow-lg text-center' key={i}>
                             <Link to={`/summary_by_senators/${senator}`}>
-                                <h2 key={i} className='senator-preview-name'>{senator}</h2>
-                                <img class='225x275-senator-rounded-img' 
+                            <img className='inline-block justify-center h-40 w-auto rounded-xl mb-5 shadow' 
                                 src={`${BASE_CONGRESS_IMAGE_PATH}${senatorID[senator]}.jpg`} 
                                 alt='Congressional Senator' 
                                 onError={e => {
                                     e.onerror = null
-                                    e.target.src='https://lh3.googleusercontent.com/ZgRbFptUzuFwwLzlnhjP6YCw29iFonExP4D6WenmP3iP6sFw5d5wgj01zjz15HpcUDmY=s85'}}></img>
+                                    e.target.src='https://senatestockwatcher.com/static/media/placeholder.157f088b.png'}
+                                    }></img>
+                                <h2 key={i} className='font-mono mb-2'>{senator}</h2>
+                                <span className=''>{}</span>
                             </Link>
                     </div>
                     ))}
+                </div>
                 </div>
             )
         }

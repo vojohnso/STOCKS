@@ -1,11 +1,7 @@
-import { Link } from "react-router-dom"
-
 const NotFound = () => {
-  return (
-    <div className="not-found">
-      <h2>Sorry</h2>
-      <p>That page cannot be found</p>
-      <Link to="/">Back to the homepage...</Link>
+  return (  
+    <div className='h-screen flex justify-center items-center bg-white-300'>
+        <h1 className='text-9xl uppercase font-black'>Error 404: Page Cannot Be Found</h1>
     </div>
   );
 }
