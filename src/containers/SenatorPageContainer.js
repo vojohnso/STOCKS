@@ -46,21 +46,20 @@ class SenatorPageContainer extends Component {
         console.log(data)   
         // Actually using the data now...
         if (!error && data) {  
-            senatorPageDetails = ( 
+            senatorPageDetails = (  
                 <div className='senator-page-wrapper'>
-                    <div className='senator-page-name'>
-                        <h1>{this.props.match.params.id}</h1>
-                        {data && data.map((senator, i) => (
-                            <div className='senator-preview' key={i}>
-                                    <h2 className='senator-transaction-amount'>{senator.transaction_date}</h2>
-                                    <b className='senator-transaction-amount'>{senator.amount}</b>
-                                    <p className='senator-transaction-ticker'>{senator.ticker}</p>
-                                    <PageModal data={senator}>
-                                    </PageModal>
-                            </div>
-                        ))}
-
-                    </div>
+                        <h1 class="text-xl font-bold mt-4 ml-4 ">Transaction Details for {this.props.match.params.id}</h1>
+                            <div class="flex flex-col bg-white h-screen font-mono lg:grid grid-cols-3 gap-8">
+                            {data && data.map((senator, i) => (
+                                <div className='senator-preview' key={i}>
+                                        <h2 className='senator-transaction-amount'>{senator.transaction_date}</h2>
+                                        <b className='senator-transaction-amount'>{senator.amount}</b>
+                                        <p className='senator-transaction-ticker'>{senator.ticker}</p>
+                                        <PageModal data={senator}>
+                                        </PageModal>
+                                </div>
+                            ))}
+                        </div>
                 </div>
             );
         }

@@ -22,10 +22,10 @@ export default function Modal(data) {
   }
   return (
     <>
-    <Button  onClick={toggleModal} variant="outlined" color="primary">Details</Button>
+    <Button onClick={toggleModal} variant="outlined" color="primary">Details</Button>
       {modal && (
-        <div className="modal">
-          <div onClick={toggleModal} className="overlay"></div>
+        <div className="fixed z-10 bg-black bg-opacity-50 w-screen h-screen inset-0">
+          <div onClick={toggleModal} className=""></div>
           <div className="modal-content">
             <h2>Details of {data.data.type}</h2>
             <p>
@@ -48,7 +48,9 @@ export default function Modal(data) {
             </p>
             <Link to={data.data.ptr_link}> "View Disclosure from EDF.gov"
             </Link>
-            <Button  onClick={toggleModal} variant="outlined" color="primary">Close</Button>
+            <div class="mt-3 flex justify-end space-x-3">
+              <button class="px-3 py-1 rounded bg-red-800 text-gray-200 hover:bg-red-700 transition duration-200 hover:bg-opacity-70" onClick={toggleModal}>Close</button>
+            </div>
           </div>
         </div>
       )}

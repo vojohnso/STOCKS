@@ -6,7 +6,7 @@ const Navbar = ({toggle}) => {
     relative shadow-sm font-mono" 
     role="navigation">
       <Link to='/' className='antialiased pl-8 text-2xl text-bold text-white p-4'>
-        Senate Analytics
+        Senate Stockers
       </Link>
       <div className="links flex"> 
       <div class="block hidden">onClick={toggle}

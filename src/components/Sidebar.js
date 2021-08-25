@@ -35,7 +35,7 @@ const Sidebar = () => {
                     </svg>
                 </div>
 
-            <span class="text-lg font-extrabold px-2 mt-8">SENATE ANALYTICS</span>
+            <span class="text-lg font-extrabold px-2 mt-8">SENATE STOCKERS</span>
             </div>
             <div class="bg-white h-1 w-full"></div>
                 <div class="nav-items mt-10">
