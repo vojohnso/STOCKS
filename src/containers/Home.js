@@ -1,4 +1,3 @@
-import Footer from "../components/Footer";
 import HomeList from "../components/HomeList";
 import useFetch from "../services/useFetch"
 
@@ -10,6 +9,11 @@ const Home = () => {
     <div className="h-screen items-center bg-white-300 mt-10">
       { error && <div>{ error }</div> }
       { isPending && <div>Loading...</div> }
+      <div className="bg-white h-screen flex flex-col justify-center items-center">
+        <h2 className="lg:text-6xl md:text-5xl sm:text-4xl text-3xl font-black mb-14">
+          Senate Analytics
+        </h2>
+      </div>
       { data && <HomeList/>}
     </div>
     

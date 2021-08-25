@@ -4,22 +4,7 @@ import { GoGraph } from "react-icons/go";
 
 const HomeList = () => {
   return (  
-    <div className="ml-40 mr-40 mt-8">
-      <div className='summary-by-senators'>
-        <Link to='/summary_by_senators'>
-          <h2><FaUser/> Summary by Senators</h2>
-        </Link>
-      </div>
-      <div className='summary-by-tickers'>
-      <Link to='/summary_by_tickers'>
-        <h2> <GoGraph/> Summary by Tickers</h2>
-        </Link>
-      </div>
-        <div className='summary-by-days'>
-      <Link to='/summary_by_days'>
-        <h2> <FaCalendarDay/> Summary by Days</h2>
-        </Link>
-        </div>
+    <div>
     </div>
   );
 }

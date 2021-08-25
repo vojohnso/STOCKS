@@ -56,7 +56,7 @@ async componentDidMount() {
                         {senatorData && senatorData.map((senator, i) => (
                         <div className='mt-0 bg-white px-2 py-4 rounded-lg shadow-lg text-center' key={i}>
                             <Link to={`/summary_by_senators/${senator}`}>
-                            <img className='inline-block justify-center h-40 w-auto rounded-xl mb-5 shadow' 
+                            <img className='inline-block justify-center h-40 w-36 overflow-hidden object-cover rounded-full border-2 mb-5 shadow' 
                                 src={`${BASE_CONGRESS_IMAGE_PATH}${senatorID[senator]}.jpg`} 
                                 alt='Congressional Senator' 
                                 onError={e => {
@@ -69,6 +69,7 @@ async componentDidMount() {
                     </div>
                     ))}
                 </div>
+                
                 </div>
             )
         }

@@ -6,18 +6,18 @@ const Dropdown = ({ isOpen, toggle }) => {
         <div 
         className={
             isOpen 
-            ? "grid grid-rows-3 text-center items-center bg-yellow-500" 
+            ? "grid grid-rows-3 text-center items-center bg-gray-900 pb-2" 
             : "hidden"
         }
             onClick={toggle}
         >
-            <Link className='p-4' to='/'>
+            <Link className='mt-1 py-2 text-white font-semibold hover:bg-gray-800 rounded' to='/'>
              Home
             </Link>
-            <Link className='p-4' to='/about_us'>
+            <Link className='mt-1 py-2 text-white font-semibold hover:bg-gray-800 rounded' to='/about_us'>
              About
             </Link>
-            <Link className='p-4' to='contact_us'>
+            <Link className='mt-1 py-2 text-white font-semibold hover:bg-gray-800 rounded' to='contact_us'>
              Contact Us
             </Link>
         </div>

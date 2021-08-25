@@ -12,6 +12,7 @@ import TickerPageContainer from './containers/TickerPageContainer';
 import DayPageContainer from './containers/DayPageContainer';
 import Dropdown from './components/Dropdown';
 import Footer from './components/Footer';
+import Sidebar from'./components/Sidebar';
 import React, {useState, useEffect} from 'react';
 
 function App() {
@@ -21,22 +22,38 @@ function App() {
     setIsOpen(!isOpen);
   };
 
-  useEffect(() => {
-    const hideMenu = () =>{
-      if(window.innerWidth > 768 && isOpen) {
-        setIsOpen(false);
-      }
-    }
-    window.addEventListener('resize', hideMenu);
-    return () => {
-      window.removeEventListener('resize', hideMenu);
-    } 
-  })
+  // useEffect(() => {
+  //   const hideMenu = () =>{
+  //     if(window.innerWidth > 768 && isOpen) {
+  //       setIsOpen(false);
+  //     }
+  //   }
+  //   window.addEventListener('resize', hideMenu);
+  //   return () => {
+  //     window.removeEventListener('resize', hideMenu);
+  //   } 
+  // })
+  window.onload=function(){
+    const open_btn = document.querySelector('.menu-button');
+    const close_btn = document.querySelector('.close-menu');
+    const sidebar = document.querySelector('.sidebar');
+    console.log(close_btn);
+    open_btn.addEventListener("click", () =>{
+      sidebar.classList.toggle("translate-x-full")
+    })
+    close_btn.addEventListener("click", () =>{
+      sidebar.classList.toggle("translate-x-full")
+    })
+    
+  }
 
   return (
+    <div>
+    <div className=''>
       <Router>
-          <Navbar toggle ={toggle}/>
-          <Dropdown isOpen={isOpen} toggle={toggle}/>
+        <Sidebar/>
+        <Navbar toggle ={toggle}/>
+        <Dropdown/>
             <Switch>
               <Route exact path="/">
                 <Home />
@@ -67,7 +84,9 @@ function App() {
               </Route>
             </Switch>
       </Router>
-  
+      <Footer/>
+      </div>
+      </div>
   );
 }
 
