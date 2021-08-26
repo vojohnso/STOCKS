@@ -25,7 +25,7 @@ class DayPageContainer extends Component {
                 error: false,
                 });
             }
-        }
+        } 
     }
     render() {
         const { data, isPending, error } = this.state;
@@ -48,9 +48,10 @@ class DayPageContainer extends Component {
         // Actually using the data now...
         if (!error && data) {  
             dayPageDetails = ( 
-                <div className='ticker-page-wrapper'>
-                    <div className='ticker-page-name'>
+                <div className='ml-40 mr-40 mt-8'>
+                    <div className='text-xl font-bold mt-4 ml-4 '>
                         <h1>{data[0].transaction_date}</h1>
+                        <div className="flex flex-col bg-white font-mono lg:grid grid-cols-3 gap-8">
                         {data && data.map((transaction, i) => (
                             <div className='ticker-preview' key={i}>
                                 <h2 className='ticker-senator'>{transaction.senator}</h2>
@@ -60,6 +61,7 @@ class DayPageContainer extends Component {
                                 </PageModal>
                             </div>
                         ))}
+                        </div>
                     </div>
                 </div>
             );

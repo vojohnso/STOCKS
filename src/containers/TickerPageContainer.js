@@ -46,11 +46,12 @@ class TickerPageContainer extends Component {
         }
         //console.log(data)   
         // Actually using the data now...
-        if (!error && data) {  
+        if (!error && data) {   
             tickerPageDetails = ( 
-                <div className='ticker-page-wrapper'>
-                    <div className='ticker-page-name'>
+                <div className='ml-40 mr-40 mt-8'>
+                    <div className='text-xl font-bold mt-4 ml-4'>
                         <h1>{data.name}</h1>
+                        <div className="flex flex-col bg-white font-mono lg:grid grid-cols-3 gap-8">
                         {data.transactions && data.transactions.map((ticker, i) => (
                             <div className='ticker-preview' key={i}>
                                 <h2 className='ticker-senator'>{ticker.senator}</h2>
@@ -59,7 +60,7 @@ class TickerPageContainer extends Component {
                                     </PageModal>
                             </div>
                         ))}
-
+                        </div>
                     </div>
                 </div>
             );

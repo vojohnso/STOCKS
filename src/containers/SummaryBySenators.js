@@ -48,7 +48,7 @@ async componentDidMount() {
 
         if (!error && senatorData) {  
             senatorPageDetails = (
-                <div className=' ml-40 mr-40 mt-8'>
+                <div className='ml-40 mr-40 mt-8'>
                     <h2 className='text-2xl mb-2 font-mono'>Summary by Senators</h2> 
                         <div className='flex flex-col bg-white h-screen font-mono lg:grid grid-cols-3 gap-8 '>
                         { error && <div>{ error }</div> }
@@ -64,36 +64,15 @@ async componentDidMount() {
                                     e.target.src='https://senatestockwatcher.com/static/media/placeholder.157f088b.png'}
                                     }></img>
                                 <h2 key={i} className='font-mono mb-2'>{senator}</h2>
-                                <span className=''>{}</span>
                             </Link>
-                    </div>
-                    ))}
-                </div>
-                
+                        </div>
+                        ))}
+                        </div>
                 </div>
             )
         }
         return <>{senatorPageDetails}</>;
     }
 }
-// const SummaryBySenators = () => {
-//     const {data, isPending, error} = useFetch('https://senate-stock-watcher-data.s3-us-west-2.amazonaws.com/aggregate/all_transactions_for_senators.json')
-//     const senatorID = getSenatorID()
-//     const senatorArr = organizeBySenator(data);
-//     return (
-//         <div className='summary-by-senators-list'>
-//             <h2>Summary by Senators</h2>
-//             { error && <div>{ error }</div> }
-//             { isPending && <div>Loading...</div> }
-//             {senatorArr && senatorArr.map((senator, i) => (
-//                 <div className='senator-preview' key={i}>
-//                     <Link to={`/summary_by_senators/${senator}`}>
-//                         <h2 key={senator.id} className='senator-preview-name'>{senator}</h2>
-//                     </Link>
-//                 </div>
-//             ))}
-//         </div>
-//     );
-// }
- 
+
 export default SummaryBySenators; 

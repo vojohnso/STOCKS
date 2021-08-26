@@ -25,6 +25,7 @@ import NumTransactionsCard from '../components/Homecard/NumTransactionsCard';
 import TotalTradeVolumeCard from '../components/Homecard/TotalTradeVolumeCard';
 import NumSenatorsCard from '../components/Homecard/NumSenatorsCard';
 import TopTickersCard from '../components/Homecard/TopTickersCard';
+import ParticlesBg from 'particles-bg'
 
 class Home extends Component {
     state = {
@@ -32,7 +33,6 @@ class Home extends Component {
         isPending: true,
         error: false,
     }
-    
     async componentDidMount() {
       const thirtyDays = await grabPastThirtyDays();
 
@@ -73,8 +73,9 @@ class Home extends Component {
         // Actually using the data now...
         if (!error && data) {
           HomePage = (
-          <div className="h-screen items-center bg-white-300 mt-10">
-          <div className="bg-white h-screen flex flex-col justify-center items-center">
+          <div className="h-full items-center bg-white-300 mt-10">
+          <div className="flex flex-col justify-center items-center">
+          <ParticlesBg type="cobweb" bg={true} />
             <h2 className="lg:text-6xl md:text-5xl sm:text-4xl text-3xl font-black mb-14">
             Senate Analytics
             </h2>
@@ -83,7 +84,7 @@ class Home extends Component {
               <TotalTradeVolumeCard total={data.totalVol}></TotalTradeVolumeCard>
               <NumSenatorsCard numSenators={data.senatorCount}></NumSenatorsCard>
             </div>
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 gap-4">
             <TopTickersCard topTickers={data.tickerList}></TopTickersCard>
             </div>
           </div>

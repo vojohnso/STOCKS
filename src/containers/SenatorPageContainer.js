@@ -47,9 +47,9 @@ class SenatorPageContainer extends Component {
         // Actually using the data now...
         if (!error && data) {  
             senatorPageDetails = (  
-                <div className='senator-page-wrapper'>
-                        <h1 class="text-xl font-bold mt-4 ml-4 ">Transaction Details for {this.props.match.params.id}</h1>
-                            <div class="flex flex-col bg-white h-screen font-mono lg:grid grid-cols-3 gap-8">
+                <div className='ml-40 mr-40 mt-8'>
+                        <h1 class="text-xl font-bold mt-4 ml-4">Transaction Details for {this.props.match.params.id}</h1>
+                            <div class="flex flex-col bg-white font-mono lg:grid grid-cols-3 gap-8">
                             {data && data.map((senator, i) => (
                                 <div className='senator-preview' key={i}>
                                         <h2 className='senator-transaction-amount'>{senator.transaction_date}</h2>
