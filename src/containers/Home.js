@@ -20,8 +20,11 @@
 
 
 import React, { Component } from "react";
-import { numberOfTransactions } from '../services/GraphicalFormatter';
-import PageModal from '../components/PageModal'
+import { grabPastThirtyDays, numberOfSenators, topTickers, totalTradeVol } from '../services/GraphicalFormatter';
+import NumTransactionsCard from '../components/Homecard/NumTransactionsCard';
+import TotalTradeVolumeCard from '../components/Homecard/TotalTradeVolumeCard';
+import NumSenatorsCard from '../components/Homecard/NumSenatorsCard';
+import TopTickersCard from '../components/Homecard/TopTickersCard';
 
 class Home extends Component {
     state = {
@@ -29,10 +32,15 @@ class Home extends Component {
         isPending: true,
         error: false,
     }
-
+    
     async componentDidMount() {
-      const data = await numberOfTransactions();
-      //console.log(data);
+      const thirtyDays = await grabPastThirtyDays();
+
+      const numTrans = thirtyDays.length;
+      const totalVol = totalTradeVol(thirtyDays);
+      const senatorCount = numberOfSenators(thirtyDays);
+      const tickerList = topTickers(thirtyDays);
+      const data = {numTrans, totalVol, senatorCount, tickerList}
       if (data === undefined || data.length === 0) {  //if we don't have any data we want to run the error message!
           this.setState({
             isPending: false,
@@ -62,14 +70,22 @@ class Home extends Component {
                 <h3>Loading senator's details now...</h3>
             )
         }
-        console.log(data)   
         // Actually using the data now...
-        if (!error && data) {  
+        if (!error && data) {
           HomePage = (
           <div className="h-screen items-center bg-white-300 mt-10">
           <div className="bg-white h-screen flex flex-col justify-center items-center">
             <h2 className="lg:text-6xl md:text-5xl sm:text-4xl text-3xl font-black mb-14">
+            Senate Analytics
             </h2>
+            <div className="grid grid-cols-3 gap-4 p-8">
+              <NumTransactionsCard numTransactions={data.numTrans}></NumTransactionsCard>
+              <TotalTradeVolumeCard total={data.totalVol}></TotalTradeVolumeCard>
+              <NumSenatorsCard numSenators={data.senatorCount}></NumSenatorsCard>
+            </div>
+            <div className="grid grid-cols-2 gap-4">
+            <TopTickersCard topTickers={data.tickerList}></TopTickersCard>
+            </div>
           </div>
           </div>
           );
