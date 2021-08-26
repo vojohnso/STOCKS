@@ -63,8 +63,15 @@ export const organizeByTicker = data => {
 // Function used to grab an array of all tickers
 export const organizeByDays = data => {
     const dayKey = [];
-    for (var i in data) {
-        dayKey.push(data[i].transaction_date);
+    let sortedList = [];
+    if (data == null) {
+        return (dayKey);
+    }
+    sortedList = data.sort(function(a,b) {
+        return new Date(b.transaction_date) - new Date(a.transaction_date)
+        })
+    for (var i in sortedList) {
+        dayKey.push(sortedList[i].transaction_date);
     }
     const dayArr = dayKey.filter((item, i , ar) => ar.indexOf(item) === i);
     return (dayArr);
